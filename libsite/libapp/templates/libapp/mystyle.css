@@ -1,0 +1,19 @@
+@CHARSET "UTF-8";
+h1
+{
+	font-family:Arial Red;
+	font-size: 300%;
+}
+body
+{
+	background-color:#99ffcc;
+}
+font
+{
+    font-size: 100%;
+    font-family: Arial Black;
+}
+.hbar1 {
+    display: inline;
+    margin: 15px;
+}

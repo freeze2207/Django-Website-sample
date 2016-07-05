@@ -1,0 +1,27 @@
+{% extends 'libapp/base.html' %}
+
+{% block body_block %}
+    <body>
+      {% if info %}
+      <ol>
+                <li> Title:  {{ info.title}} </li>
+                <li> Pubyear:  {{ info.pubyr}} </li>
+
+                {% if info.type == 1 %}
+                  <li> Type:  BOOK </li>
+                  <li> Cost of Book:  {{ info.cost}} </li>
+                    <li> Comments of This Book:  {{ info.comments}} </li>
+
+                {% elif info.type == 2 %}
+                    <li> Type:  DVD </li>
+                    <li> Cook of DVD:  {{ info.cost}} </li>
+                    <li> Comments of This DVD:  {{ info.comments}} </li>
+                {% endif %}
+      </ol>
+    {% else %}
+        <strong>There are no available items!</strong>
+    {% endif %}
+<p><a href="{% url 'libapp:about' %}">About page</a></p>
+<p><a href="{% url 'libapp:index' %}">Index page</a></p>
+</body>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>You can suggest a new item for purchase here.</h1>
+    {% extends 'libapp/base.html' %}
+    {% block myhdg %}Hello Zihe {% endblock %}
+    {% block body_block %}
+        <div id="'main" style="width:25%" class="form-inline">
+            <form method="POST" action="{% url 'libapp:newitem' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+            {% endblock %}
+</body>
+</html>

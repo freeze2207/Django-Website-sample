@@ -1,0 +1,17 @@
+ {% extends 'libapp/base.html' %}
+
+    {% block body_block %}
+        <style>
+        form {
+           width: 350px;
+           height: 200px;
+         }
+        </style>
+    <div align="center">
+        <form method="POST" action="{% url 'libapp:login' %}">
+                {% csrf_token %}
+                {{ loginform.as_p }}
+                <input type="submit" class="btn btn-primary" value="Submit">
+        </form>
+    </div>
+    {% endblock %}

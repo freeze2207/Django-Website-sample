@@ -1,0 +1,91 @@
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<style>
+    strong
+    {
+        font-size: 150%;
+    }
+</style>
+{% extends 'libapp/base.html' %}
+{% block title %}
+    Suggestions
+{% endblock %}
+{% block body_block %}
+{#    <h2>Suggestion List</h2>#}
+    <div>
+            <h2>List of Suggested items</h2>
+            <a href="{% url 'libapp:newitem' %}" class="btn btn-primary">New Item</a>
+    </div>
+    <div>
+        <div>
+            <div>
+                <strong>Book</strong>
+            </div>
+            <div>
+                {% if suggestionlist %}
+                <table class="table">
+                   <tbody>
+                      {% for item in suggestionlist %}
+                          {% if item.get_type_display == "Book" %}
+                          <tr>
+                        <td width="350px"><a href="{% url 'libapp:info' item.id %}">{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</a></td>
+                          </tr>
+                          {% endif %}
+                      {% endfor %}
+                   </tbody>
+                </table>
+                {% else %}
+                <strong>There are no available items!</strong>
+                {% endif %}
+{#                {% if suggestionlist %}#}
+{#                <ol>#}
+{#                    {% for item in suggestionlist %}#}
+{#                        {% if item.get_type_display == "Book" %}#}
+{#                            <li>{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</li>#}
+{#                            <li><a href="{% url 'libapp:info' item.id %}">{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</a></li>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                </ol>#}
+{##}
+{#                {% else %}#}
+{#                    <strong>There are no available items!</strong>#}
+{#                {% endif %}#}
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>DVD</strong>
+            </div>
+            <div>
+                {% if suggestionlist %}
+                <table class="table">
+                   <tbody>
+                      {% for item in suggestionlist %}
+                          {% if item.get_type_display == "DVD" %}
+                          <tr>
+                        <td width="350px"><a href="{% url 'libapp:info' item.id %}">{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</a></td>
+                          </tr>
+                          {% endif %}
+                      {% endfor %}
+                   </tbody>
+                </table>
+                {% else %}
+                <strong>There are no available items!</strong>
+                {% endif %}
+
+{#                {% if suggestionlist %}#}
+{#                <ol>#}
+{#                    {% for item in suggestionlist %}#}
+{#                        {% if item.get_type_display == "DVD" %}#}
+{#                            <li>{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</li>#}
+{#                            <li><a href="{% url 'libapp:info' item.id %}">{{ item.title}} - {{ item.pubyr }} - ${{ item.cost }}</a></li>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                </ol>#}
+{##}
+{#                {% else %}#}
+{#                    <strong>There are no available items!</strong>#}
+{#                {% endif %}#}
+            </div>
+        </div>
+    </div>
+{% endblock %}

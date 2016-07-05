@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+    {% extends 'libapp/base.html' %}
+
+    {% block body_block %}
+    <p><a href="/libapp/index">Index page(hardcoded)</a></p>
+    <p><a href="{% url 'libapp:index'%}">Index page(namespacing)</a></p>
+        <p><strong>The Website visited:{{ visits }}</strong></p>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,57 @@
+{% extends 'libapp/base.html' %}
+{% block title %}
+    Suggestions
+{% endblock %}
+{% block body_block %}
+    <div>
+            <strong>Search</strong>
+            <form action="{% url 'libapp:searchlib' %}" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Search">
+            </form>
+    </div>
+    <div>
+            <h2>List of Searched items</h2>
+    </div>
+    <div>
+        <div>
+            <div>
+                <strong>Books</strong>
+            </div>
+            <div>
+                {% if booklist %}
+                <ol>
+                    {% for item in booklist %}
+                        {% if item.itemtype == "Book" %}
+                            <li> <a href="{% url 'libapp:detail' item.id %}">{{ item.title}} </a> <br/> Author : {{ item.author }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+
+                {% else %}
+                    <strong>There are no available items!</strong>
+                {% endif %}
+            </div>
+        </div>
+        <div>
+            <div>
+                <strong>DVDs</strong>
+            </div>
+            <div>
+                {% if dvdlist %}
+                <ol>
+                    {% for item in dvdlist %}
+                        {% if item.itemtype == "DVD" %}
+                        <li> <a href="{% url 'libapp:detail' item.id %}">{{ item.title}} </a> <br/> Maker : {{ item.maker }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+
+                {% else %}
+                    <strong>There are no available items!</strong>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

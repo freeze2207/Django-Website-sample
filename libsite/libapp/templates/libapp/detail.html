@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+    {% extends 'libapp/base.html' %}
+    {% block body_block %}
+    {% if book %}
+        <h2>Detail of Book</h2>
+        <p>Title:{{ book.title}}</p>
+        <p>Author:{{ book.author }}</p>
+        <p>Category:{{ book.category}}</p>
+    {% else %}
+        <h2>Detail of Dvd</h2>
+        <p>Title:{{ dvd.title}}</p>
+        <p>Maker:{{ dvd.maker}}</p>
+        <p>Duration:{{ dvd.duration}}</p>
+        <p>Rating:{{ dvd.rating}}</p>
+    {% endif %}
+    {% endblock %}
+    <p><a href="{% url 'libapp:index'%}">Index</a></p>
+</body>
+</html>

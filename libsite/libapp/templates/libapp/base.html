@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+
+<html>
+    <head>
+            <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+            <script src="/bootstrap/js/bootstrap.min.js"></script>
+        <title>MAC Library APP - {% block title %}Welcome!{% endblock %}</title>
+    <style>
+        div{
+            padding: 20px;
+        }
+        p{
+            font-size: 100%;
+            font-family: Arial Black;
+        }
+        body{
+            background-color: #fcf8e3;
+        }
+        </style>
+    </head>
+
+    <body>
+
+        <div>
+
+            {% if user.is_anonymous %}
+                <a href="{% url 'libapp:login'%}" class="btn btn-primary btn-lg" role="button">login</a>
+                <a href="{% url 'libapp:register'%}" class="btn btn-primary btn-lg" role="button">register now!</a>
+            {% else %}
+                <h1>{% block myhdg %}Hello {{ request.user.first_name }} {% endblock %}</h1>
+                <a href="{% url 'libapp:logout' %}" class="btn btn-primary btn-lg" role="button">logout</a>
+                <a href="{% url 'libapp:myitems' %}" class="btn btn-primary btn-lg" role="button">Myitems</a>
+            {% endif %}
+            {% block body_block %}*** {% endblock %}
+        </div>
+        <hr />
+        <nav class="navbar navbar-default" role="navigation" style="background-color: inherit">
+           <div class="navbar-header">
+              <a class="navbar-brand" href="{% url 'libapp:index' %}">MAC Library</a>
+           </div>
+           <div>
+              <ul class="nav navbar-nav">
+                 <li><a href="/libapp/about/"><p>Find out about this site</p></a></li>
+                 <li><a href="{% url 'libapp:index' %}"><p>Click here to return to main page</p></a></li>
+                 <li><a href="{% url 'libapp:suggestions' %}"><p>Suggestions Page</p></a></li>
+              </ul>
+           </div>
+        </nav>
+{#        <div>#}
+{#            <ul>#}
+{#                <li class="hbar1"><a href="/libapp/about/">Find out about this site</a></li>#}
+{#                <li class="hbar1"><a href = "{% url 'libapp:index' %}">Click here to return to main page</a><br/></li>#}
+{#                <li class="hbar1"><a href="{% url 'libapp:suggestions' %}">Suggestions Page</a></li>#}
+{#            </ul>#}
+{#        </div>#}
+    </body>
+</html>

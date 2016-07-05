@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+    <title>Please register</title>
+    <style>
+        body
+        {
+            background-color: #fcf8e3;
+        }
+        form
+        {
+            font-size: 100%;
+            font-family: Arial Black;
+            padding: 30px;
+        }
+        div{
+            padding: 30px;
+        }
+    </style>
+</head>
+<body>
+    {% block body_block %}
+        {% if added %}
+            <strong>User added</strong>
+        {% endif %}
+        {% if fail %}
+            <p>User cannot be added</p>
+        {% endif %}
+        <p><form method="POST" action="{% url 'libapp:register' %}">
+        {% csrf_token %}
+        {{ uf.as_p }}
+        <input type="submit" class="btn btn-primary" value="Submit" onclick="return confirm('You have registered successfully!')">
+        <input type="reset" class="btn btn-primary" value="Reset">
+        </form></p>
+        <br><br>
+        <div >
+        <a href="{% url 'libapp:index'%}" class="btn btn-primary btn-lg" role="button">Main Menu</a>
+        </div>
+    {% endblock %}
+
+</body>
+</html>
+

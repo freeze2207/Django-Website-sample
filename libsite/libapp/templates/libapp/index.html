@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style>
+
+        </style>
+</head>
+
+<body>
+    {% extends 'libapp/base.html' %}
+
+    {% block body_block %}
+        <div>
+        <strong>Your lucky number is: {{ luckynum }}</strong>
+        <a href="{% url 'libapp:searchlib' %}" class="btn btn-primary" role="button">Search</a>
+        {% if itemlist %}
+        <table class="table">
+           <h1>List of Library items</h1>
+           <tbody>
+              {% for item in itemlist %}
+                  <tr>
+                <td width="350px"> <a href="{{ item.id }}">{{ item.itemtype }}:  {{ item}} </a></td>
+                  </tr>
+              {% endfor %}
+           </tbody>
+        </table>
+        {% else %}
+        <strong>There are no available items!</strong>
+        {% endif %}
+{#        {% if itemlist %}#}
+{#        <h2>List of Library items</h2>#}
+{#        <ol>#}
+{#            {% for item in itemlist %}#}
+{#                <li> <a href="{{ item.id }}">{{ item.itemtype }}:  {{ item}} </a></li>#}
+{#            {% endfor %}#}
+{#        </ol>#}
+{##}
+{#    {% else %}#}
+{#        <strong>There are no available items!</strong>#}
+{#    {% endif %}#}
+    {% endblock %}
+    <p><a href="{% url 'libapp:about'%}" class="btn btn-default btn-lg" role="button">About page</a></p>
+{#    <p><a href="{% url 'libapp:about'%}">About page</a></p>#}
+    </div>
+</body>
+</html>
